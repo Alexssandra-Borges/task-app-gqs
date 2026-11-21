@@ -16,8 +16,14 @@ O teste CT-01 integra formulário, validação, navegação e repositório em me
 - CT-01: integração de componentes (interface + repositório injetado), sem rede.
 - CT-03 e CT-07: complementares automatizados.
 
-## Demonstração de defeito controlado (não aplicada no código entregue)
-Alterar temporariamente `title.length > maxLength` para `title.length >= maxLength` em `lib/title_validator.dart`. Rodar `flutter test test/title_validator_test.dart`: CT-05 deverá falhar. Restaurar `>` e rodar novamente: CT-05 deverá passar. Registrar prints dos dois resultados e os hashes dos commits. **Não afirmar que foi executado sem evidência.**
+## Demonstração de defeito controlado (corrigido)
+
+Foi introduzido temporariamente o defeito DEF-001 no método `TitleValidator.validate()`, por meio da remoção da condição responsável por rejeitar títulos vazios.
+Ao executar `flutter test test/title_validator_test.dart`, os casos CT-02 (título vazio) e CT-03 (somente espaços) falharam, resultando em 4 testes aprovados e 2 reprovados.
+Após a identificação do defeito, a condição de validação foi restaurada e a suíte completa foi executada novamente com `flutter test`, obtendo aprovação de todos os 10 testes.
+O defeito foi registrado na Issue #3, com o histórico de acompanhamento Aberto → Corrigido → Fechado.
+Registro do defeito: https://github.com/Alexssandra-Borges/task-app-gqs/issues/3
+O defeito controlado não está presente no código final entregue.
 
 ## GitHub Actions
 Workflow `.github/workflows/flutter-tests.yml`, executado em push/pull request. Após subir, conferir a aba Actions e copiar o link de execução.

@@ -29,4 +29,28 @@ void main() {
     expect(repository.entries.single, {'title': 'Comprar pão', 'done': false, 'uid': 'uid-teste'});
     expect(find.text('Abrir cadastro'), findsOneWidget);
   });
+   
+
+  testWidgets('CT-08: formulário rejeita título com apenas espaços',
+      (tester) async {
+    final repository = RecordingRepository();
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: TaskCreatePage(
+          repository: repository,
+          currentUid: () => 'uid-teste',
+        ),
+      ),
+    );
+
+    await tester.enterText(find.byType(TextField), '   ');
+    await tester.tap(find.text('Salvar'));
+    await tester.pump();
+
+    expect(repository.entries, isEmpty);
+    expect(find.text('Informe o título da tarefa.'), findsOneWidget);
+  });
+
+
 }

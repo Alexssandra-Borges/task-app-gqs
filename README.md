@@ -12,7 +12,7 @@ O teste CT-01 integra formulário, validação, navegação e repositório em me
 
 ## Seleção e rastreabilidade
 - CT-02/CT-04: limite inferior (0 e 1), unitário.
-- CT-05/CT-06: limite superior (100 e 101), unitário; CT-05 é o teste de regressão após correção controlada.
+- CT-05/CT-06: limite superior (100 e 101), unitário.
 - CT-01: integração de componentes (interface + repositório injetado), sem rede.
 - CT-03 e CT-07: complementares automatizados.
 
